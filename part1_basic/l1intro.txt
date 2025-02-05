@@ -1,0 +1,91 @@
+=> Typescript 
+
+Typescript is a programming language developed by Miscrosoft
+We can give advantage
+    (i) TypeSafety ( statically typed feature )
+    (ii) Error Detection
+
+
+i. Early Error Detection(အမှားတွေကိုစောစောတွေ့နိင်)
+    Typescript catches errors at compile time. This help prevent runtime errors and make your code reliable.
+
+ii. Improved Readability & Maintainability
+    Easier to read and understand. Other developers can quickly understand as well.
+
+
+Javascript small-scale applications
+Typescript medium-large applications
+
+Typescript can use for Client-Side as Reactjs & Angularjs ...
+Typescript can use for Server-Side with Nodejs
+
+TypeScript Vs JavaScript
+
+
+= TypeScript
+    (i) Static programming language
+    (ii) Compiled ( TypeScript Compiler = tsc )
+    (iii) Compilation Errors
+
+
+= JavaScript
+    (i) Dynamic programming language
+    (ii) Interpreted
+    (iii) Runtime Errors
+
+
+Syntax
+
+JavaScript
+let score = 50;
+
+
+Typescript
+let score:number = 50;
+
+
+=> official site
+
+https://www.typescriptlang.org/
+
+------------------------------------------------------------------------------------------------------------
+
+=> Install Typescript Globally
+
+tsc -v or tsc --version (Version Check)
+node -v (Node Check)
+npm -v (Npm Check)
+(i) must have node
+
+=linux
+sudo apt install nodejs npm -y (install nodejs)
+
+=MAC
+https://github.com/nvm-sh/nvm (install nodejs)
+
+
+=Window
+https://nodejs.org/en (install nodejs)
+
+
+
+
+=> Install ( Ubuntu, MAC, Windows) 
+
+1. https://www.typescriptlang.org/download/
+2. npm install -g typescript 
+
+------------------------------------------------------------------------------------------------------------
+
+=> Install Typescript Locally
+
+npm init -y
+
+npm install typescript --save-dev
+
+tsc -v or tsc --version or npx tsc --version (Node Package Execute)
+
+
+------------------------------------------------------------------------------------------------------------
+
+
