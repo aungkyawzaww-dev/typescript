@@ -55,7 +55,7 @@ https://www.typescriptlang.org/
 tsc -v or tsc --version (Version Check)
 node -v (Node Check)
 npm -v (Npm Check)
-(i) must have node
+ must have node in your computer
 
 =linux
 sudo apt install nodejs npm -y (install nodejs)
