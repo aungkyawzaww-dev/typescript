@@ -11,7 +11,10 @@
     "forceConsistentCasingInFileNames": true,  
     "strict": true,                     /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    
     "noUnusedParameters": false,
+    "noUnusedLocals": false,
+
     "strictNullChecks":true
     
   }

@@ -22,14 +22,15 @@ console.log(car("toyota", 1, 100));
 console.log(car("mazda", 3, 100));
 let truck = (brand, qty, tax, discount) => {
     let price = 0;
+    let result = 0;
     if (brand === "toyota")
         price = 3000;
     if (brand === "mazda")
         price = 2000;
     if (brand === "suzuki")
         price = 1000;
-    let total = (price * qty) + tax;
+    let total = (price * qty) + tax + discount;
     return total;
 };
-console.log(car("toyota", 1, 100));
-console.log(car("mazda", 3, 100));
+console.log(truck("toyota", 1, 100, 10));
+console.log(truck("mazda", 3, 100, 10));

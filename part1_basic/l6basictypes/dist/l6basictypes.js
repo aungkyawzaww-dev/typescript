@@ -45,3 +45,131 @@ const student = {
     age: 20
 };
 console.log(student);
+let numberarrs = [10, 20, [30, 40, [500, 600]]];
+console.log(numberarrs);
+const officestaff = {
+    id: 1001,
+    name: "Yu Yu",
+    department: "Accounting"
+};
+console.log(officestaff);
+console.log(typeof officestaff);
+const newstaff = JSON.stringify(officestaff);
+console.log(newstaff);
+console.log(typeof newstaff);
+function staffinfo(newstaffjson) {
+    return (JSON.parse(newstaffjson));
+}
+console.log(staffinfo(newstaff));
+console.log(staffinfo(newstaff).id);
+console.log(staffinfo(newstaff).name);
+console.log(staffinfo(newstaff).department);
+let luckynumber = "777";
+console.log(luckynumber);
+function userinfo(name, age) {
+    console.log(`My name is ${name}. I am ${age} years old`);
+}
+userinfo("Tun Tun", "20");
+function getinput(val) {
+    if (typeof val === "string") {
+        return val.toUpperCase();
+    }
+    else {
+        return val * 2;
+    }
+}
+console.log(getinput("hi"));
+console.log(getinput(20));
+let dinner = (amount, servicefee) => {
+    if (typeof servicefee === "number") {
+        return amount + servicefee;
+    }
+    else {
+        return amount + parseInt(servicefee);
+    }
+};
+console.log(dinner(3000, 500));
+console.log(dinner(3000, "200"));
+console.log(dinner(3000, "100 usd"));
+console.log(dinner(3000, "usd 50"));
+let lunch = (amount, servicefee) => {
+    if (typeof servicefee === "number") {
+        return amount + servicefee;
+    }
+    else {
+        return amount + parseInt(servicefee);
+    }
+};
+console.log(lunch(3000, 500));
+console.log(lunch(3000, "200"));
+console.log(lunch(3000, "100 usd"));
+console.log(lunch(3000, "usd 50"));
+const desktop = {
+    brand: "MSI",
+    price: 800,
+    cpu: "Intel Core I9",
+    coolingfun: false
+};
+console.log(desktop);
+const laptop = {
+    brand: "HP",
+    price: 600,
+    cpu: "Intel Core I7"
+};
+laptop.cpu = "Corei7";
+console.log(laptop);
+const newperson = {
+    uid: 1001,
+    name: "Maung Kyaw",
+    age: 30,
+    department: "IT"
+};
+console.log(newperson);
+function printpersoninfo(obj) {
+    console.log(`ID is ${obj.uid}, Name is ${obj.name}, Age is ${obj.age} and Department is ${obj.department}`);
+}
+printpersoninfo(newperson);
+const nestjsclass = {
+    id: 1002,
+    title: "Nextjs Batch 1",
+    price: 80000,
+    type: "Zoom Class",
+    content() {
+    },
+    cloudprovider() {
+    },
+    paymentgateaway() {
+    }
+};
+console.log(nestjsclass);
+function greet(name, age = 18) {
+    return `Hello, my name is ${name} and I am ${age} years old`;
+}
+console.log(greet("Hnin Mya", 20));
+console.log(greet("Hnin Mya"));
+function greeting(name, age) {
+    if (age !== undefined) {
+        return `Hello, my name is ${name} and I am ${age} years old`;
+    }
+    else {
+        return `Hello, my name is ${name}`;
+    }
+}
+console.log(greeting("Nyi Nyi", 25));
+console.log(greeting("Nyaung Nyaung"));
+let sayhi;
+sayhi = (msg) => {
+    return msg;
+};
+console.log(sayhi("Mingalar Par"));
+let sayhello;
+sayhello = (msg, name, content = "What are you doing.") => {
+    if (name !== undefined) {
+        return `Hello ${msg}! ${name}. ${content}`;
+    }
+    else {
+        return `Hello ${msg}! ${content}`;
+    }
+};
+console.log(sayhello("Min Ga Lar Par", "Muyar", "How are you."));
+console.log(sayhello("Min Ga Lar Par"));
