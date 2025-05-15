@@ -59,7 +59,7 @@ console.log(age7); // Hay
 
 let cashback:number = 1000;
 cashback = 500;
-console.log(cashback);
+console.log(cashback); 
 
 type Promotion = number; // Note : this is not value ! it's just type (we can call literal type)
 let cashreturn:Promotion = 2000;
@@ -71,7 +71,7 @@ console.log(price); // 700
 
 
 type FixedPrice = 300 | 500 | 700;  // Note : this is not value ! it's just type (we can call literal type)
-const itemprice:FixedPrice = 700;
+const itemprice:FixedPrice = 300;
 console.log(itemprice);
 
 type DLTClassType = "zoom" | "vdo";
@@ -85,6 +85,7 @@ type PersonInfo = {
     age : number;
 }
 
+
 const student : PersonInfo = {
     name: "Aung Aung",
     gender: "Male",
@@ -97,131 +98,131 @@ console.log(student); // { name: 'Aung Aung', gender: 'Male', age: 20 }
 
 
 // => Rescurisve Type 
-
 type NestedArray = number | NestedArray[];
 
 // let numberarrs:NestedArray = [10,20];
 // let numberarrs:NestedArray = [10,20,[30,40]];
 let numberarrs:NestedArray = [10,20,[30,40,[500,600]]];
-console.log(numberarrs);
 
+console.log(numberarrs);
 
 
 // => Type Assertions 
 
 type Employee = {
-    id:number,
-    name:string,
-    department:string
+    id:number;
+    name:string;
+    department: string;
 }
+
 
 const officestaff:Employee = {
     id:1001,
     name:"Yu Yu",
     department:"Accounting"
-}
+};
 
-console.log(officestaff); // { id: 1001, name: 'Yu Yu', department: 'Accounting' }
-console.log(typeof officestaff); //object
+console.log(officestaff); //{ id: 1001, name: 'Yu Yu', department: 'Accounting' }
+console.log(typeof officestaff);  // object
 
-const newstaff = JSON.stringify(officestaff); 
-console.log(newstaff); //{"id":1001,"name":"Yu Yu","department":"Accounting"}
+const newstaff = JSON.stringify(officestaff);
+console.log(newstaff); // {"id":1001,"name":"Yu Yu","department":"Accounting"}
 console.log(typeof newstaff); //string
-
 
 function staffinfo(newstaffjson:string):Employee{
     // return JSON.parse(newstaffjson);
 
     // Old Method 
-    // return (<Employee>JSON.parse(newstaffjson));
+    // return (<Employee> JSON.parse(newstaffjson));
 
     // New Method 
-    return (JSON.parse(newstaffjson)) as Employee;
+    return (JSON.parse(newstaffjson) as Employee);
+
 }
 
 console.log(staffinfo(newstaff)); //{ id: 1001, name: 'Yu Yu', department: 'Accounting' }
+console.log(typeof staffinfo(newstaff)); // object
+
 console.log(staffinfo(newstaff).id); // 1001
-console.log(staffinfo(newstaff).name); // Yu Yu
-console.log(staffinfo(newstaff).department); // Accounting
+console.log(staffinfo(newstaff).name);
+console.log(staffinfo(newstaff).department);
 
 
-
-// => Union Type 
+// => Union Type
 let luckynumber:number|string = "777";
 console.log(luckynumber);
 
 
-// => Union Type in functions
+// => Union Type in function 
 
-function userinfo(name:string,age:number|string){
-    console.log(`My name is ${name}. I am ${age} years old`);
+function userinof(name:string,age:number|string){
+    console.log(`My name is ${name}. i am ${age} years old.`);
 }
 
-userinfo("Tun Tun","20");
+userinof("Tun Tun","20");
 
 
-// exercise , Type Guads
+// exercise , Type Guard 
 
 function getinput(val:string|number){
 
-    if(typeof val === "string"){
+    if (typeof val == "string"){
         return val.toUpperCase();
     }else{
         return val * 2;
     }
+
 }
 
 console.log(getinput("hi")); // HI
-console.log(getinput(20)); //40
+console.log(getinput(20)); // 40
 
 
+let dinner = (amount:number,serviefee:number|string):number=>{
 
-let dinner = (amount:number,servicefee:string|number):number => {
-
-    if(typeof servicefee === "number"){
-        return amount + servicefee;
+    if(typeof serviefee == "number"){
+        return amount + serviefee;
     }else{
-        return amount + parseInt(servicefee);
+        return amount + parseInt(serviefee);
     }
-};
 
+}
 
-console.log(dinner(3000,500));  // 3500
+console.log(dinner(3000,500)); // 3500
 console.log(dinner(3000,"200")); // 3200
-console.log(dinner(3000,"100 usd"));  // 3100
-console.log(dinner(3000,"usd 50"));  // NaN
+console.log(dinner(3000,"100 usd")); // 3100
+// console.log(dinner(3000,"usd 200")); // NaN
 
 
 
-let lunch = (amount:number,servicefee:string|100|300|500):number => {
 
-    if(typeof servicefee === "number"){
-        return amount + servicefee;
+
+let lunch = (amount:number,serviefee:100|300|500):number=>{
+
+    if(typeof serviefee == "number"){
+        return amount + serviefee;
     }else{
-        return amount + parseInt(servicefee);
+        return amount + parseInt(serviefee);
     }
-};
 
+}
 
-console.log(lunch(3000,500));  // 3500
-console.log(lunch(3000,"200")); // 3200
-
-// console.log(lunch(3000,200)); // error
+console.log(lunch(3000,500)); // 3500
+console.log(lunch(3000,100)); // 3100 
 // console.log(lunch(3000,501)); // error
+// console.log(lunch(3000,"100 usd")); // error
 
-console.log(lunch(3000,"100 usd"));  // 3100
-console.log(lunch(3000,"usd 50"));  // NaN
 
 
 // Object Type with Option (?)
 
-type ComputerUnit = {
-    readonly brand:string, // override လုပ်လို့မရအောင် readonly ထည့်တာ
-    price:number,
-    cpu?:string, // default ပေးတဲ့ပုံစံ
-    coolingfun?:boolean
-}
 
+type ComputerUnit = {
+    readonly brand:string; // readonly is no overwrite
+    price:number;
+    cpu?:string;
+    coolingfun?:boolean;
+}
 
 const desktop:ComputerUnit = {
     brand:"MSI",
@@ -232,25 +233,25 @@ const desktop:ComputerUnit = {
 
 console.log(desktop); //{ brand: 'MSI', price: 800, cpu: 'Intel Core I9', coolingfun: false }
 
-
 const laptop:ComputerUnit = {
-    brand:"HP",
-    price:600,
-    cpu:"Intel Core I7"
+    brand:"MSI",
+    price:800,
 }
 
-// laptop.brand = "Lenovo";
-laptop.cpu = "Corei7";
+// laptop.brand = "Lenovo"; // no overwrite cuz: (readonly)
+laptop.price = 1000; // is Ok. cuz didn't write (readyonly) in price
 
-console.log(laptop); //{ brand: 'HP', price: 600, cpu: 'Corei7' }
+console.log(laptop); // { brand: 'MSI', price: 800 }
 
-//exe 1
+
+// => Intersection Types (&) (Adding types)
+
+// exe 1 
 
 type Person = {
     name:string;
-    age:number;
+    age:Number;
 }
-
 
 type Staff = {
     uid:number;
@@ -259,24 +260,26 @@ type Staff = {
 
 type StaffPerson = Person & Staff;
 
-const newperson:StaffPerson ={
+const newperson:StaffPerson = {
     uid:1001,
-    name:"Maung Kyaw",
-    age:30,
+    name:"Tun Tun",
+    age:20,
     department:"IT"
-};
-
-console.log(newperson); //{ uid: 1001, name: 'Maung Kyaw', age: 30, department: 'IT' }
-
-
-//exe 1 (intersection types with function)
-
-
-function printpersoninfo(obj:StaffPerson){
-    console.log(`ID is ${obj.uid}, Name is ${obj.name}, Age is ${obj.age} and Department is ${obj.department}`);
 }
 
-printpersoninfo(newperson); //ID is 1001, Name is Maung Kyaw, Age is 30 and Department is IT
+console.log(newperson); //{ uid: 1001, name: 'Tun Tun', age: 20, department: 'IT' }
+
+
+
+
+// exe2 (intersection types with function )
+
+function printPersonInfo(obj:StaffPerson){
+    console.log(`ID is ${obj.uid}, Name is ${obj.name} , Age is ${obj.age} and Department is ${obj.department}`);
+}
+
+printPersonInfo(newperson); // ID is 1001, Name is Tun Tun , Age is 20 and Department is IT
+
 
 
 // exe 3 
@@ -285,92 +288,159 @@ type Article = {
     id:number;
     title:string;
     price:number;
-    type:string
-};
+    type:string;
+}
 
 type ArticleDescription = {
-    content():void
+    content():void;
 }
 
 type ArticleVdoRecord = {
-    cloudprovider():void
+    cloudprovider():void;
 }
 
 type ArticlePayment = {
-    paymentgateaway():void
+    paymentgateway():void;
 }
 
-type NewArticle = Article & ArticleDescription & ArticleVdoRecord & ArticlePayment
+type NewArticle = Article & ArticleDescription & ArticleVdoRecord & ArticlePayment;
 
-const nestjsclass:NewArticle = {
+const nextjsClass:NewArticle = {
     id:1002,
-    title:"Nextjs Batch 1",
-    price:80000,
-    type:"Zoom Class",
+    title:"nextJs Class",
+    price:400,
+    type:"VdoClass",
     content(){
 
     },
     cloudprovider(){
 
     },
-    paymentgateaway(){
+    paymentgateway(){
 
     }
 }
 
-console.log(nestjsclass);
+console.log(nextjsClass);
 
 
-// => Function Type , Default Parameter , Optional Parameter(=value), Option Parameter (?)
+// => Function Type  , Default Parameter ( =value ) , Optional Parameter (?)
 
-// exe 1 (Default Parameter )
+// exe1 (Default Parameter)
 
 function greet(name:string,age:number=18):string{
-    return `Hello, my name is ${name} and I am ${age} years old`;
+    return `Hello, my name is ${name} and I am ${age} years old.`;
 }
 
-console.log(greet("Hnin Mya",20)); //Hello, my name is Hnin Mya and I am 20 years old
-console.log(greet("Hnin Mya")); //Hello, my name is Hnin Mya and I am 18 years old
+console.log(greet("Hnin Mya",20)); // Hello, my name is Hnin Mya and I am 20 years old.
+console.log(greet("Hnin Hnin")); // Hello, my name is Hnin Hnin and I am 18 years old.
 
-// exe 2 (Optional Parameter )
 
+// exe2 Optional Parameter (?)
 function greeting(name:string,age?:number):string{
     if(age !== undefined){
-        return `Hello, my name is ${name} and I am ${age} years old`;
+        return `Hello, my name is ${name} and I am ${age} years old.`;
     }else{
-        return `Hello, my name is ${name}`;
+        return `Hello, my name is ${name}.`;
     }
 }
 
-console.log(greeting("Nyi Nyi",25)); //Hello, my name is Nyi Nyi and I am 25 years old
-console.log(greeting("Nyaung Nyaung")); //Hello, my name is Nyaung Nyaung
+console.log(greeting("Kaung Kaung",20)); // Hello, my name is Kaung Kaung and I am 20 years old.
+console.log(greeting("Nyaung Nyaung")); // Hello, my name is Nyaung Nyaung.
+
+
 
 // exe 3 (i)
-
 let sayhi:Function;
 
 sayhi = (msg:string):string=>{
     return msg;
 }
 
-console.log(sayhi("Mingalar Par")); // Mingalar Par
+console.log(sayhi("Mingalar Par")); //Mingalar Par
 
 
 // exe 3 (ii)
-
+// let sayhello:Function;
 let sayhello: (msg:string,name?:string,content?:string)=>string;
 
 sayhello = (msg,name,content="What are you doing.")=>{
-    if(name !== undefined){
-        return `Hello ${msg}! ${name}. ${content}`;
+
+    if (name !== undefined){
+        return `Hello ${msg}!, ${name}. ${content}`;
     }else{
-        return `Hello ${msg}! ${content}`;
+        return `Hello ${msg}!, ${content}`;
+    }
+
+}
+
+console.log(sayhello("Min Ga Lar Par","Muyar","How are you?")); // Hello Min Ga Lar Par!, Muyar. How are you?
+console.log(sayhello("Min Ga Lar Par")); // Hello Min Ga Lar Par!, What are you doing.
+
+
+
+// => Nested Object Type 
+
+type Address = {
+    street:string;
+    city:string;
+    country:string;
+}
+
+type Customer = {
+    name:string;
+    phone:string;
+    address:Address; // Nested Object type
+}
+
+const vipcu:Customer = {
+    name:"U Hla",
+    phone:"0912345",
+    address:{
+        street:"123 Main St",
+        city: "Mandalay",
+        country: "Myanmar"
     }
 }
 
+console.log(vipcu);
 
-console.log(sayhello("Min Ga Lar Par","Muyar","How are you.")); // Hello Min Ga Lar Par! Muyar. How are you.
-console.log(sayhello("Min Ga Lar Par"));  //Hello Min Ga Lar Par! What are you doing.
+
+// =>  Literal Object Type 
+
+function employer(owner:{fullname:string}):string{
+    return owner.fullname;
+}
+
+console.log(employer({fullname:"Mon Mon"})); // Mon Mon
+
+
+
+// =>  Literal Object Type  (Destructuring)
+
+function lawyer({fullname}:{fullname:string}):string{
+    return fullname;
+}
+
+console.log(lawyer({fullname:"U Ba"})); // U Ba
+
+
+
+// => typeof in "in typescript Typequery"
+
+const Animal = {
+    name:"Panda",
+    age:7
+}
+
+type Pet = typeof Animal;
+
+let petone:Pet = {
+    name:"Cute cat",
+    age:10
+}
+
+console.log(petone); // { name: 'Cute cat', age: 10 }
 
 
 
