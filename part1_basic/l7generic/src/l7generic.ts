@@ -271,6 +271,49 @@ console.log(userset); // Set(4) { { id: 1, name: 'Hsu Hsu', age: 20 }, { id: 2, 
 
 
 
+// => keyof , extends
+
+type VipUser = {
+    id:number;
+    name:string;
+    email:string;
+}
+
+// type VipClient = typeof VipUser;
+type VipCustomer = keyof VipUser; // Extracts keys as a union type : "id" | "name" | "email"
+
+//exe 
+
+const shop = {
+    name:"Apple Store",
+    city:"Yangon"
+}
+
+
+type Vendor = typeof shop;
+type VendorKeys = keyof Vendor; // "name" | "city"
+
+let store:Vendor = {
+    name:"Cherry Store",
+    city:"Mandalay"
+}
+
+console.log(store); // { name: 'Cherry Store', city: 'Mandalay' }
+
+// => keyof , extends
+
+function getshopinfo<T,K extends keyof T>(obj:T,info:K):T[K]{
+    return obj[info];
+}
+
+let shopname = getshopinfo(store,"name");
+console.log(shopname); // Cherry Store
+
+let cityname = getshopinfo(store,"city");
+console.log(cityname); // Mandalay
+
+
+
 
 
 
