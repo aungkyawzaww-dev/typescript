@@ -1,0 +1,12 @@
+=> Typescript init
+
+tsc --init
+
+uncomment 
+    "rootDir": "./src",  
+    "outDir": "./dist",  
+    "removeComments": true, 
+    "noEmitOnError": true,    
+
+=> build 
+tsc -w (this will output js file to dist)
