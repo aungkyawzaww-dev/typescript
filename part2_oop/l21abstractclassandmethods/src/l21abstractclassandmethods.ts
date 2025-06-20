@@ -1,81 +1,81 @@
 // Abstract Class 
-    // class must start with abstract keoword. 
+    // class must start with abstract keyword. 
     // abstract class can't instance
 
 // Abstract Method 
-    // An abstract method is a method decclared in an abstract class that does not have a ReportBOdy. It must be implements in an sub class.
+    // An abstract method is a method declared in an abstract class that does not have a ReportBOdy. It must be implements in an sub class.
 
 
-    abstract class People {
-        constructor(
-            public name:string,
-            public age:number
-        ){}
+abstract class People {
+    constructor(
+        public name:string,
+        public age:number
+    ){}
 
-        abstract getrole():string;
+    abstract getrole():string;
 
-        showinfo():void{
-            console.log(`Name = ${this.name}, Age = ${this.age}, Role: ${this.getrole()}`);
-        }
+    showinfo():void{
+        console.log(`Name = ${this.name}, Age = ${this.age}, Role: ${this.getrole()}`);
+    }
+}
+
+
+class Student extends People {
+    constructor(
+        public name:string,
+        public age:number,
+        public grade:string
+    ){
+        super(name,age); // call parent constructor
     }
 
-
-    class Student extends People {
-        constructor(
-            public name:string,
-            public age:number,
-            public grade:string
-        ){
-            super(name,age); // call parent constructor
-        }
-
-        getrole():string{
-            return "Student"
-        }
-
-        study():void{
-            console.log(`${this.name} is studying in grade ${this.grade}.`);
-        }
+    getrole():string{
+        return "Student"
     }
 
+    study():void{
+        console.log(`${this.name} is studying in grade ${this.grade}.`);
+    }
+}
 
-    class Staff extends People {
-        constructor(
-            public name:string,
-            public age:number,
-            public department:string
-        ){
-            super(name,age); // call parent constructor
-        }
 
-        getrole():string{
-            return "Staff"
-        }
-
-        work():void{
-            console.log(`${this.name} work in ${this.department} department.`);
-        }
+class Staff extends People {
+    constructor(
+        public name:string,
+        public age:number,
+        public department:string
+    ){
+        super(name,age); // call parent constructor
     }
 
-
-    class Employee extends People {
-        constructor(
-            public name:string,
-            public age:number,
-            public position:string,
-            public salary:string
-        ){
-            super(name,age); // call parent constructor
-        }
-
-        getrole():string{
-            return "Employee"
-        }
-
-        study():void{
-            console.log(`${this.name} earns $${this.salary} as a ${this.position}.`);
-        }
+    getrole():string{
+        return "Staff"
     }
+
+    work():void{
+        console.log(`${this.name} work in ${this.department} department.`);
+    }
+}
+
+
+class Employee extends People {
+    constructor(
+        public name:string,
+        public age:number,
+        public position:string,
+        public salary:number
+    ){
+        super(name,age); // call parent constructor
+    }
+
+    getrole():string{
+        return "Employee"
+    }
+
+    pay():void{
+        console.log(`${this.name} earns $${this.salary} as a ${this.position}.`);
+    }
+}
 
 
 
@@ -88,6 +88,10 @@ studentObj.study(); // Kyaw Kyaw is studying in grade Grade 11.
 const staffObj = new Staff("Tun Tun",23,"IT"); 
 staffObj.showinfo();
 staffObj.work();
+
+const employeeObj = new Employee("Win Win",25,"Manager",3000); 
+employeeObj.showinfo();
+employeeObj.pay();
 
 
 
