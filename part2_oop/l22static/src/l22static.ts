@@ -103,4 +103,32 @@ const staffObj2 = new Staff("Nu Nu");
 Staff.showtotal(); // Total staff = 2
 
 
+// Exercise 4
+
+class Employee{
+    name:string;
+    age:number;
+
+    constructor(name:string,age:number){
+        this.name = name;
+        this.age = age;
+    }
+
+    // instant method 
+    intro():void{
+        console.log(`Hi, I\m ${this.name} and I\m ${this.age} years old.`)
+    }
+
+    // static method
+    static agefilter(age:number):boolean{
+        return age >= 18;
+    }
+}
+
+const employeeObj = new Employee("Hnin Hnin",20);
+console.log(employeeObj);
+console.log(Employee.agefilter(20));// true
+console.log(Employee.agefilter(17)); // false
+
+
 // 18ST 

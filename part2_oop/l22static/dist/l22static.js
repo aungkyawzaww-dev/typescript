@@ -60,3 +60,19 @@ Staff.totalstaff = 0;
 const staffObj1 = new Staff("Su Su");
 const staffObj2 = new Staff("Nu Nu");
 Staff.showtotal();
+class Employee {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    intro() {
+        console.log(`Hi, I\m ${this.name} and I\m ${this.age} years old.`);
+    }
+    static agefilter(age) {
+        return age >= 18;
+    }
+}
+const employeeObj = new Employee("Hnin Hnin", 20);
+console.log(employeeObj);
+console.log(Employee.agefilter(20));
+console.log(Employee.agefilter(17));
