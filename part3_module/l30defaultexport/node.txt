@@ -1,0 +1,19 @@
+npm init (continue enter )
+
+npm install typescript --save-dev
+
+create folder (src)
+create foler (dist)
+create index.html
+
+
+tsc --init
+
+npminstall esmodules-dev-server --save-dev
+
+=> build 
+
+tsc -w
+npm run serve
+
+
