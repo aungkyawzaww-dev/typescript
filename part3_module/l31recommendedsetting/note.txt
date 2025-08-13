@@ -1,0 +1,57 @@
+npm init (continue enter )
+
+npm install typescript --save-dev
+
+create folder (src)
+create folder (src) -> index.ts
+create foler (dist)
+create index.html
+
+
+tsc --init
+
+---------------------------------------------------
+{
+    "compilerOptions": {
+     
+      "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+      "module": "ES6",                                /* Specify what module code is generated. */
+      "rootDir": "./src", 
+      "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+      "removeComments": true, 
+      "noEmitOnError": true,
+      "esModuleInterop": true,                            /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+      "forceConsistentCasingInFileNames": true,  
+      "strict": true,                     /* Skip type checking .d.ts files that are included with TypeScript. */
+      "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+      
+      "noUnusedParameters": false,
+      "noUnusedLocals": false,
+  
+      "strictNullChecks":true
+      
+    }
+  }
+
+------------------------------------------------------------
+
+=> Recommended typescript config
+
+(i) Install
+https://github.com/tsconfig/bases
+npm install --save-dev @tsconfig/recommended
+
+(ii) Add to your tsconfig.json
+    "extends": "@tsconfig/recommended/tsconfig.json"
+
+
+------------------------------------------------------------
+
+npminstall esmodules-dev-server --save-dev
+
+=> build 
+
+tsc -w
+npm run serve
+
+
